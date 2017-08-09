@@ -1,11 +1,11 @@
-﻿using System.Web.Http.Controllers;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Saule.Queries;
 
 namespace Saule.Http
 {
     internal static class QueryContextUtils
     {
-        internal static QueryContext GetQueryContext(HttpActionContext actionContext)
+        internal static QueryContext GetQueryContext(FilterContext actionContext)
         {
             var hasQuery = actionContext.Request.Properties.ContainsKey(Constants.PropertyNames.QueryContext);
             QueryContext query;

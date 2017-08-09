@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Saule.Http;
 using Saule.Queries;
 using Saule.Serialization;
 

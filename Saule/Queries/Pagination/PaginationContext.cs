@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Primitives;
 
 namespace Saule.Queries.Pagination
 {
     internal class PaginationContext
     {
-        public PaginationContext(IEnumerable<KeyValuePair<string, string>> filters, int perPage)
+        public PaginationContext(IEnumerable<KeyValuePair<string, StringValues>> filters, int perPage)
         {
-            var keyValuePairs = filters as IList<KeyValuePair<string, string>> ?? filters.ToList();
+            var keyValuePairs = filters as IList<KeyValuePair<string, StringValues>> ?? filters.ToList();
 
-            var dictionary = keyValuePairs.ToDictionary(kv => kv.Key.ToLowerInvariant(), kv => kv.Value.ToLowerInvariant());
+            var dictionary = keyValuePairs.ToDictionary(kv => kv.Key.ToLowerInvariant(), kv => kv.Value.ToString().ToLowerInvariant());
             ClientFilters = dictionary;
             Page = GetNumber();
             PerPage = perPage;

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web.Http;
-using Saule.Queries;
-using Saule.Serialization;
-
-namespace Saule.Http
+﻿namespace Saule.Http
 {
     /// <summary>
     /// Provides extension methods for the <see cref="HttpConfiguration"/> class.

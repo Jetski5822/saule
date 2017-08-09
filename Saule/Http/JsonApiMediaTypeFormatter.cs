@@ -21,49 +21,6 @@ namespace Saule.Http
         private readonly JsonApiConfiguration _config = new JsonApiConfiguration();
         private HttpRequestMessage _request;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonApiMediaTypeFormatter"/> class.
-        /// </summary>
-        [Obsolete("Please use the extension method 'ConfigureJsonApi' on HttpConfiguration instead.")]
-        public JsonApiMediaTypeFormatter()
-        {
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue(Constants.MediaType));
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonApiMediaTypeFormatter"/> class.
-        /// </summary>
-        /// <param name="urlBuilder">Determines how to generate urls for links.</param>
-        [Obsolete("Please use the extension method 'ConfigureJsonApi' on HttpConfiguration instead.")]
-        public JsonApiMediaTypeFormatter(IUrlPathBuilder urlBuilder)
-            : this()
-        {
-            _config.UrlPathBuilder = urlBuilder;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonApiMediaTypeFormatter"/> class.
-        /// </summary>
-        /// <param name="converters">Json converters to manipulate the serialization process.</param>
-        [Obsolete("Please use the extension method 'ConfigureJsonApi' on HttpConfiguration instead.")]
-        public JsonApiMediaTypeFormatter(params JsonConverter[] converters)
-            : this()
-        {
-            _config.JsonConverters.AddRange(converters);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonApiMediaTypeFormatter"/> class.
-        /// </summary>
-        /// <param name="urlBuilder">Determines how to generate urls for links.</param>
-        /// <param name="converters">Json converters to manipulate the serialization process.</param>
-        [Obsolete("Please use the extension method 'ConfigureJsonApi' on HttpConfiguration instead.")]
-        public JsonApiMediaTypeFormatter(IUrlPathBuilder urlBuilder, params JsonConverter[] converters)
-            : this()
-        {
-            _config.UrlPathBuilder = urlBuilder;
-            _config.JsonConverters.AddRange(converters);
-        }
 
         internal JsonApiMediaTypeFormatter(JsonApiConfiguration config)
         {

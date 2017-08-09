@@ -1,153 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <Import Project=".\..\Saule.Build\Saule.Commons.props" />
+  
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AD43EDE3-88C9-47EE-BAE1-C14C80F1ACE4}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Saule</RootNamespace>
-    <AssemblyName>Saule</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
+    <TargetFrameworks>netstandard1.6</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Saule.XML</DocumentationFile>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Saule.XML</DocumentationFile>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
-  </PropertyGroup>
+  
   <ItemGroup>
-    <Reference Include="Humanizer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Humanizer.Core.2.1.0\lib\netstandard1.0\Humanizer.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Humanizer.Core" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="1.1.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ApiResource.cs" />
-    <Compile Include="FormatterPriority.cs" />
-    <Compile Include="Http\DisableDefaultIncludedAttribute.cs" />
-    <Compile Include="Http\AllowsQueryAttribute.cs" />
-    <Compile Include="Http\HttpConfigExtensions.cs" />
-    <Compile Include="Http\JsonApiConfiguration.cs" />
-    <Compile Include="Http\FilterExpressions\CaseInsensitiveStringQueryFilterExpression.cs" />
-    <Compile Include="Http\FilterExpressions\DefaultQueryFilterExpression.cs" />
-    <Compile Include="Http\FilterExpressions\LambdaQueryFilterExpression.cs" />
-    <Compile Include="Http\IQueryFilterExpression.cs" />
-    <Compile Include="Http\PreprocessingDelegatingHandler.cs" />
-    <Compile Include="Http\QueryContextUtils.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="JsonApiSerializer.cs" />
-    <Compile Include="JsonApiSerializerOfT.cs" />
-    <Compile Include="LinkType.cs" />
-    <Compile Include="NullGuardExtensions.cs" />
-    <Compile Include="ObjectExtensions.cs" />
-    <Compile Include="PreprocessResult.cs" />
-    <Compile Include="Queries\Filtering\FilteringContext.cs" />
-    <Compile Include="Queries\Filtering\FilteringInterpreter.cs" />
-    <Compile Include="Queries\Filtering\FilteringProperty.cs" />
-    <Compile Include="Http\QueryFilterExpressionCollection.cs" />
-    <Compile Include="Queries\Filtering\TypeCorrectingVisitor.cs" />
-    <Compile Include="Queries\Including\IncludingContext.cs" />
-    <Compile Include="Queries\Including\IncludingProperty.cs" />
-    <Compile Include="Queries\Lambda.cs" />
-    <Compile Include="Queries\Query.cs" />
-    <Compile Include="Queries\QueryContext.cs" />
-    <Compile Include="Queries\Sorting\SortingInterpreter.cs" />
-    <Compile Include="Queries\Sorting\SortingContext.cs" />
-    <Compile Include="Queries\Sorting\SortingDirection.cs" />
-    <Compile Include="Queries\Sorting\SortingProperty.cs" />
-    <Compile Include="Serialization\ResourceGraphPathSet.cs" />
-    <Compile Include="Serialization\ResourceGraphRelationship.cs" />
-    <Compile Include="Serialization\ResourceGraph.cs" />
-    <Compile Include="Serialization\ResourceSerializer.cs" />
-    <Compile Include="Serialization\ResourceGraphNodeKey.cs" />
-    <Compile Include="Serialization\ResourceGraphNode.cs" />
-    <Compile Include="ResourceRelationshipOfT.cs" />
-    <Compile Include="Serialization\CanonicalUrlPathBuilder.cs" />
-    <Compile Include="Serialization\JsonApiContractResolver.cs" />
-    <Compile Include="Serialization\DefaultUrlPathBuilder.cs" />
-    <Compile Include="Serialization\IUrlPathBuilder.cs" />
-    <Compile Include="Http\PaginatedAttribute.cs" />
-    <Compile Include="Http\ReturnsResourceAttribute.cs" />
-    <Compile Include="Http\JsonApiMediaTypeFormatter.cs" />
-    <Compile Include="RelationshipKind.cs" />
-    <Compile Include="Queries\Pagination\PaginationContext.cs" />
-    <Compile Include="Queries\Pagination\PaginationInterpreter.cs" />
-    <Compile Include="Queries\EnumerableExtensions.cs" />
-    <Compile Include="Queries\QueryMethod.cs" />
-    <Compile Include="Queries\Pagination\PaginationQuery.cs" />
-    <Compile Include="Serialization\ApiError.cs" />
-    <Compile Include="ResourceAttribute.cs" />
-    <Compile Include="ResourceRelationship.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serialization\ErrorSerializer.cs" />
-    <Compile Include="Serialization\ResourceDeserializer.cs" />
-    <Compile Include="JsonApiException.cs" />
-    <Compile Include="StringExtensions.cs" />
-    <Compile Include="TypeExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Saule.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
